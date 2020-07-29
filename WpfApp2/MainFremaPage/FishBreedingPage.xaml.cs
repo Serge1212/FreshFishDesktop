@@ -1,10 +1,12 @@
 ﻿using Firebase.Database;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -86,6 +88,13 @@ namespace WpfApp2.MainFrame
 
         async void DeleteBreedingDetails_Click(object sender, RoutedEventArgs e)
         {
+            var myMessageQueue = new SnackbarMessageQueue(TimeSpan.FromMilliseconds(2000));
+            MessageSnackbar.MessageQueue = myMessageQueue;
+            var messageQueue = MessageSnackbar.MessageQueue;
+            var message = "Item deleted";
+            await Task.Factory.StartNew(() => messageQueue.Enqueue(message));
+
+
             BreedingDetails selectedBreedingDetails = BreedingDetailsDataGrid.SelectedItem as BreedingDetails;
             await breedingHelper.DeleteBreedingDelails(selectedBreedingDetails.ID);
         }

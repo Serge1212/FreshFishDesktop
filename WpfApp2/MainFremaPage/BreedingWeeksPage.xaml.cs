@@ -44,7 +44,7 @@ namespace WpfApp2.MainFremaPage
              .AsObservableCollection();
 
         }
-        private void AddNewBreedingWeek_Click(object sender, RoutedEventArgs e)
+        private void AddNewBreedingWeekButton_Click(object sender, RoutedEventArgs e)
         {
             BreedingWeeksWindow bw = new BreedingWeeksWindow();
             bw.ShowDialog();
@@ -59,5 +59,6 @@ namespace WpfApp2.MainFremaPage
             }
             BreedingWeeksDataGrid.ItemsSource = BreedingWeeksCollection;
         }
+   
     }
 }

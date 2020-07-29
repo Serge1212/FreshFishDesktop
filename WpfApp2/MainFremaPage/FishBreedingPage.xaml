@@ -20,6 +20,7 @@
             <RowDefinition Height="26" />
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Grid.Row="0"
                                   CornerRadius="8"
@@ -87,6 +88,7 @@
                   SelectionChanged="BreedingDetailsDataGrid_SelectionChanged"
                   MouseDoubleClick="BreedingDetailsDataGrid_MouseDoubleClick"
                   Grid.Row="3"
+                  Grid.RowSpan="2"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   Margin="5">
@@ -134,11 +136,12 @@
     </Style>
         </Hyperlink.Style>Show Main Chart</Hyperlink>
         </TextBlock>
-       
+
         <Button Style="{DynamicResource MaterialDesignFloatingActionButton}"
                 x:Name="ShowBreedingWeeksButton"
                 IsEnabled="False"
                 Grid.Column="1"
+                Grid.RowSpan="2"
                 Grid.Row="3">
             <Hyperlink TextDecorations="{x:Null}"
                        Foreground="White"
@@ -148,5 +151,12 @@
                                          Width="30" />
             </Hyperlink>
         </Button>
+        <materialDesign:Snackbar HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 Grid.Column="0"
+                                 Grid.Row="4"
+                                 Background="#FF7EC3E9"
+                                 x:Name="MessageSnackbar"
+                                 Message="hello" />
     </Grid>
 </Page>
