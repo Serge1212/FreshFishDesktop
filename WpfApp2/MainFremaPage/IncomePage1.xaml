@@ -1,0 +1,132 @@
+﻿<Page
+    x:Class="WpfApp2.MainFrame.IncomePage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApp2.MainFrame"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Title="IncomePage1"
+    Loaded="Page_Loaded">
+    <Grid>
+        <Border  Margin="8 8 8 8  " BorderBrush="#FF7EC3E9"  CornerRadius="20" BorderThickness="2" >
+
+            <Grid>
+                <Border  x:Name="Bdborder" BorderThickness="0" CornerRadius="20" Background="White" />
+                <Grid >
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Bdborder}"/>
+                    </Grid.OpacityMask>
+                    <StackPanel
+                        Margin="5 5 50 50"
+                        Orientation="Horizontal">
+                        <Label
+                            Content="Total income: "
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Foreground="#FF7EC3E9"
+                            FontWeight="DemiBold"
+                            FontSize="34"
+                            Width="230"
+                            Height="69" />
+                        <Label
+                            x:Name="incomeLabel"
+                            Content="0.0"
+                            VerticalAlignment="Top"
+                            Foreground="#FF014E81"
+                            FontWeight="Bold"
+                            FontSize="34"
+                            Height="69" />
+                        <Button
+                            Visibility="Hidden"
+                            VerticalAlignment="Top"
+                            Height="40"
+                            Margin=" 0 7 0 0"
+                            Width="48"
+                            BorderBrush="{x:Null}"
+                            Background="{x:Null}">
+                            <materialDesign:PackIcon
+                                Kind="Refresh"
+                                Foreground="Black"
+                                Height=" 35"
+                                Width="35"
+                                Margin="-14 -4 0 0" />
+                        </Button>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="5 70 50 50"
+                        Orientation="Horizontal">
+                        <Label>
+                            <materialDesign:PackIcon
+                                Kind="Dollar"
+                                Foreground="#FF014E81"
+                                Height="30"
+                                Width="30"
+                                Margin="-11 -3 0 0" />
+                        </Label>
+                        <Label
+                            x:Name="DollarLabel"
+                            Content="0.0"
+                            Foreground="#FF7EC3E9"
+                            FontSize="28"
+                            Margin="-10 -7 1 1"></Label>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="5 110 50 50"
+                        Orientation="Horizontal">
+                        <Label>
+                            <materialDesign:PackIcon
+                                Kind="Euro"
+                                Foreground="#FF014E81"
+                                Height="30"
+                                Width="30"
+                                Margin="-11 -3 0 0" />
+                        </Label>
+                        <Label
+                            x:Name="EuroLabel"
+                            FontSize="28"
+                            Foreground="#FF7EC3E9"
+                            Margin="-10 -7 1 1">0.0</Label>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="5 150 50 50"
+                        Orientation="Horizontal">
+                        <Label>
+                            <materialDesign:PackIcon
+                                Kind="Ruble"
+                                Foreground="#FF014E81"
+                                Height="30"
+                                Width="30"
+                                Margin="-11 -3 0 0" />
+                        </Label>
+                        <Label
+                            x:Name="RubleLabel"
+                            FontSize="28"
+                            Foreground="#FF7EC3E9"
+                            Margin="-10 -7 1 1">0.0</Label>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="5 190 50 50"
+                        Orientation="Horizontal">
+                        <Label>
+                            <materialDesign:PackIcon
+                                Kind="Bitcoin"
+                                Foreground="#FF014E81"
+                                Height="30"
+                                Width="30"
+                                Margin="-11 -3 0 0" />
+                        </Label>
+                        <Label
+                            x:Name="BitcoinLabel"
+                            FontSize="28"
+                            Foreground="#FF7EC3E9"
+                            Margin="-10 -7 1 1">0.0</Label>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,176 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:WpfApp2">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary
+            Source="Colors.xaml" />
+        <ResourceDictionary
+            Source="Fons.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!-- BaseStyle -->
+    <Style TargetType="{x:Type Button}" x:Key="BaseButton" BasedOn="{StaticResource BaseStyle}">
+        <Setter
+            Property="WindowChrome.IsHitTestVisibleInChrome"
+            Value="True" />
+        <Setter
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="Padding"
+            Value="8" />
+        <Setter
+            Property="Foreground"
+            Value="White" />
+        <Setter
+            Property="Width"
+            Value="30" />
+        
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger
+                Property="IsMouseOver"
+                Value="True">
+                <Setter
+                    Property="Background"
+                    Value="{StaticResource BackgroundLinghtBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <!-- Hoverless-->
+    <Style TargetType="{x:Type Button}" x:Key="Hoverless">
+        <Setter
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="BorderThickness"
+            Value="0" />
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- ButtonSettings-->
+    <Style TargetType="{x:Type Button}" x:Key="ButtonSettings" BasedOn="{StaticResource BaseButton}">
+        <Setter
+            Property="Content">
+            <Setter.Value>
+                <materialDesign:PackIcon
+                    Kind="Settings"
+                    Foreground="White" />
+            </Setter.Value>
+        </Setter>
+       
+    </Style>
+    
+    <!-- ButtonMinimaze -->
+    <Style
+        TargetType="{x:Type Button}"
+        x:Key="ButtonMinimaze" BasedOn="{StaticResource BaseButton}">
+        <Setter
+            Property="Content">
+            <Setter.Value>
+                <materialDesign:PackIcon
+                    Kind="WindowMinimize" Foreground="White" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Maximize Button-->
+    <Style
+        TargetType="{x:Type Button}"
+        x:Key="ButtonMaximize"
+        BasedOn="{StaticResource BaseButton}">
+        <Setter
+            Property="Content">
+            <Setter.Value>
+                <materialDesign:PackIcon
+                    Kind="Fullscreen"
+                    Foreground="White" />
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+    <!--Close Button-->
+    <Style
+        TargetType="{x:Type Button}"
+        x:Key="ButtonClose"
+        BasedOn="{StaticResource BaseButton}">
+        <Setter
+            Property="Content">
+            <Setter.Value>
+                <materialDesign:PackIcon
+                    Kind="Close"
+                    Foreground="White" />
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter
+                    Property="Background"
+                    Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!-- Main Page Button -->
+    <Style TargetType="{x:Type Button}" x:Key="MenuButton" >
+        <Setter
+            Property="Background"
+            Value="Transparent" />
+        <Setter
+            Property="BorderThickness"
+            Value="0" />
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="{x:Type Button}">
+                    <Border
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Width"
+            Value="25" />
+        <Setter
+            Property="Height"
+            Value="25" />
+        <Setter
+            Property="Foreground"
+            Value="#FF014E81" />
+    </Style>
+</ResourceDictionary>

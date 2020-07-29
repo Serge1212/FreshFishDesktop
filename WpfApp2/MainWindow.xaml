@@ -1,0 +1,148 @@
+﻿<Window
+    x:Class="WpfApp2.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:local="clr-namespace:WpfApp2"
+    mc:Ignorable="d"
+    Title="Fresh Fish"
+    Height="500"
+    Width="800"
+    MinWidth="{Binding WindowMinimumWidth}"
+    MinHeight="{Binding WindowMinimumHeight}"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    AllowsTransparency="True">
+    
+    <Window.Resources>
+        <Style TargetType="{x:Type local:MainWindow}">
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="{x:Type Window}">
+                        
+                        <Border
+                            Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                            <Grid>
+
+                                 <!--Opacity mask for corners on grid--> 
+                                <Border
+                                    x:Name="Container"
+                                    Background="{StaticResource BackgroundVeryLightBrush}"
+                                    CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}" />
+                                
+                                <!-- Window border and dropshadown -->
+                                <Border
+                                    CornerRadius="{Binding WindowCornerRadius, FallbackValue=5}"
+                                    Background="{Binding ForegroundLightBrush, FallbackValue=Black}">
+                                    <Border.Effect>
+                                        <DropShadowEffect
+                                            ShadowDepth="0"
+                                            Opacity="0.2" />
+                                    </Border.Effect>
+                                </Border>
+
+                                <!-- The main window content -->
+                                <Grid >
+
+                                    <!-- Corner clipping -->
+                                    <Grid.OpacityMask>
+                                        <VisualBrush
+                                            Visual="{Binding ElementName=Container}" />
+                                    </Grid.OpacityMask>
+                                    
+                                    <Grid.RowDefinitions>
+                                        <!-- Title Bar -->
+                                        <RowDefinition
+                                            Height="{Binding TitleHeightGridLenght, FallbackValue=30}" />
+                                        <!-- drop shadow -->
+                                        <RowDefinition
+                                            Height="Auto" />
+                                        <RowDefinition
+                                            Height="*" />
+                                        
+                                    </Grid.RowDefinitions>
+                                    <!--Title Bar-->
+                                    <Grid
+                                        Background="#FF014E81" 
+                                        Grid.Column="0"
+                                        Panel.ZIndex="1">
+                                        
+                                        <Grid.ColumnDefinitions>
+                                            <!-- Icon -->
+                                            <ColumnDefinition
+                                                Width="Auto" />
+                                            <!-- Title-->
+                                            <ColumnDefinition
+                                                Width="*" />
+                                            <!--Window Button-->
+                                            <ColumnDefinition
+                                                Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <!--Icon-->
+                                        <Button Style="{StaticResource Hoverless}" WindowChrome.IsHitTestVisibleInChrome="True"
+                                            Command="{Binding MenuCommand}">
+                                            <Image
+                                                Source="\Image\fish (1).png" />
+                                        </Button>
+                                        <!-- Title -->
+                                        <Viewbox Grid.Column="1" Style="{StaticResource TitelViewbox}">
+                                            <TextBlock
+                                                FontSize="1"
+                                                Style="{StaticResource TitelTextBlock}"
+                                                Text="{Binding RelativeSource= {RelativeSource TemplatedParent}, Path=Title, FallbackValue='Fresh Fish'}" />
+                                            
+                                        </Viewbox>
+                                        <!-- Windosw Bottuns -->
+                                            <StackPanel
+                                                Grid.Column="2"
+                                                Orientation="Horizontal">
+                                            <Button
+                                               Style="{StaticResource ButtonSettings}" />
+                                            <Button
+                                                Command="{Binding MinimizeCommand}"
+                                                Style="{StaticResource ButtonMinimaze}" />
+                                            <Button
+                                                Command="{Binding MaximizeCommand}"
+                                                Style="{StaticResource ButtonMaximize}" />
+                                            <Button
+                                                Command="{Binding CloseCommand}"
+                                                Style="{StaticResource ButtonClose}" />
+                                        </StackPanel>
+                                        
+                                    </Grid>
+
+                                    <!-- Page Content -->
+                                    <Border
+                                        Grid.Row="2"
+                                        Padding="{Binding InnerContentPadding}">
+                                        <ContentPresenter
+                                            Content="{TemplateBinding Content}" />
+                                    </Border>
+
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            ResizeBorderThickness="{Binding ResizeBorderThickness}"
+            CaptionHeight="{Binding TitleHeight}"
+            GlassFrameThickness="0"
+            CornerRadius="0" />
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Frame
+             NavigationUIVisibility="Hidden"
+            x:Name="MainFrame"
+          />
+    </Grid>
+</Window>
