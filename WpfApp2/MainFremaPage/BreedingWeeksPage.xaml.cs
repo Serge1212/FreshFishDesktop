@@ -31,7 +31,7 @@ namespace WpfApp2.MainFremaPage
         public BreedingWeeksPage()
         {
             InitializeComponent();
-            GetBreedingWeeksCollection();
+                GetBreedingWeeksCollection();
             BreedingWeeksDataGrid.ItemsSource = BreedingWeeksCollection;
         }
         void GetBreedingWeeksCollection()

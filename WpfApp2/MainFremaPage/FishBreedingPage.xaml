@@ -115,7 +115,8 @@
                    VerticalAlignment="Center"
                    Name="MainDiagram"
                    Padding="5,0,0,0">
-            <Hyperlink TextDecorations="{x:Null}">
+            <Hyperlink TextDecorations="{x:Null}"
+                       NavigateUri="MainBreedingChartPage.xaml">
                 <Hyperlink.Style>
             <Style TargetType="{x:Type Hyperlink}">
         <Setter Property="FocusVisualStyle"
