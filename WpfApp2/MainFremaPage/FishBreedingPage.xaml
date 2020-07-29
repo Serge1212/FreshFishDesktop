@@ -68,6 +68,7 @@
             <materialDesign:PackIcon Kind="Edit" />
         </Button>
         <Button Style="{DynamicResource MaterialDesignFloatingActionButton}"
+                Click="DeleteBreedingDetails_Click"
                 x:Name="DeleteBreedingDetails"
                 IsEnabled="False"
                 Background="#FF0872B8"

@@ -77,17 +77,17 @@ namespace WpfApp2.MainFrame
             
         }
 
-        async void DeleteBreedingDetails_Click(object sender, RoutedEventArgs e)
-        {
-            BreedingDetails selectedBreedingDetails = BreedingDetailsDataGrid.SelectedItem as BreedingDetails;
-            await breedingHelper.DeleteBreedingDelails(selectedBreedingDetails.ID);
-        }
-
         private void EditBreedingDetails_Click(object sender, RoutedEventArgs e)
         {
             BreedingDetails selectedBreedingDetails = BreedingDetailsDataGrid.SelectedItem as BreedingDetails;
             BreedingDetailsWindow bw = new BreedingDetailsWindow(selectedBreedingDetails);
             bw.Show();
+        }
+
+        async void DeleteBreedingDetails_Click(object sender, RoutedEventArgs e)
+        {
+            BreedingDetails selectedBreedingDetails = BreedingDetailsDataGrid.SelectedItem as BreedingDetails;
+            await breedingHelper.DeleteBreedingDelails(selectedBreedingDetails.ID);
         }
     }
 }
