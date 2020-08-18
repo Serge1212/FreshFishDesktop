@@ -84,10 +84,11 @@
         </StackPanel>
         <TextBlock Grid.Row="0"
                    Grid.Column="2"
+                   Margin="5"
                    Height="20"
                    TextElement.FontSize="14"
                    FontFamily="Verdana"
-                   HorizontalAlignment="Left"
+                   HorizontalAlignment="Right"
                    VerticalAlignment="Bottom"
                    Name="MainDiagram"
                    Padding="5,0,0,0">

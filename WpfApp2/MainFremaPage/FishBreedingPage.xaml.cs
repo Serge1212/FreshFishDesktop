@@ -42,11 +42,20 @@ namespace WpfApp2.MainFrame
 
         void GetBreedingDetailsCollection()
         {
-            BreedingDetailsCollection = breedingHelper.client
-             .Child("BreedingDetails")
-             .AsObservable<BreedingDetails>()
-             .ObserveOnDispatcher()
-             .AsObservableCollection();
+            try
+            {
+                BreedingDetailsCollection = breedingHelper.client
+                             .Child("BreedingDetails")
+                             .AsObservable<BreedingDetails>()
+                             .ObserveOnDispatcher()
+                             .AsObservableCollection();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("No breeding details");
+            }
+            
         }
         private void AddNewBreedingDetails_Click(object sender, RoutedEventArgs e)
         {
@@ -93,10 +102,16 @@ namespace WpfApp2.MainFrame
             var messageQueue = MessageSnackbar.MessageQueue;
             var message = "Item deleted";
             await Task.Factory.StartNew(() => messageQueue.Enqueue(message));
-
-
             BreedingDetails selectedBreedingDetails = BreedingDetailsDataGrid.SelectedItem as BreedingDetails;
             await breedingHelper.DeleteBreedingDelails(selectedBreedingDetails.ID);
+            var weeks = await breedingHelper.GetAllBreedingWeeksAsync();
+            foreach(var w in weeks)
+            {
+                if(w.BreedingDetailsID == selectedBreedingDetails.ID)
+                {
+                    await breedingHelper.DeleteBreedingWeek(w.ID);
+                }
+            }
         }
     }
 }

@@ -20,7 +20,6 @@
             <RowDefinition Height="26" />
             <RowDefinition Height="40" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Grid.Row="0"
                                   CornerRadius="8"
@@ -83,12 +82,40 @@
                 Margin="190,0,0,15">
             <materialDesign:PackIcon Kind="Delete" />
         </Button>
+        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}"
+                x:Name="ShowBreedingWeeksButton"
+                HorizontalAlignment="Left"
+                Background="#FF0872B8"
+                BorderBrush="#FF0872B8"
+                VerticalAlignment="Bottom"
+                IsEnabled="False"
+                Height="50"
+                Width="50"
+                Margin="270,0,0,15"
+                Grid.RowSpan="2"
+                Grid.Row="1">
+            <Hyperlink TextDecorations="{x:Null}"
+                       Foreground="White"
+                       NavigateUri="BreedingWeeksPage.xaml">
+                <Border Background="#FF0872B8"
+                        CornerRadius="30"
+                        Height="50"
+                        Width="50">
+                    <materialDesign:PackIcon Margin="15"
+                                             Height="20"
+                                             Width="20"
+                                             Kind="ArrowRight" />
+                </Border>
+            </Hyperlink>
+        </Button>
         <DataGrid x:Name="BreedingDetailsDataGrid"
                   Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"
                   SelectionChanged="BreedingDetailsDataGrid_SelectionChanged"
                   MouseDoubleClick="BreedingDetailsDataGrid_MouseDoubleClick"
                   Grid.Row="3"
-                  Grid.RowSpan="2"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   Margin="5">
@@ -115,8 +142,7 @@
                    VerticalAlignment="Center"
                    Name="MainDiagram"
                    Padding="5,0,0,0">
-            <Hyperlink TextDecorations="{x:Null}"
-                       NavigateUri="MainBreedingChartPage.xaml">
+            <Hyperlink TextDecorations="{x:Null}">
                 <Hyperlink.Style>
             <Style TargetType="{x:Type Hyperlink}">
         <Setter Property="FocusVisualStyle"
@@ -137,21 +163,6 @@
     </Style>
         </Hyperlink.Style>Show Main Chart</Hyperlink>
         </TextBlock>
-
-        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}"
-                x:Name="ShowBreedingWeeksButton"
-                IsEnabled="False"
-                Grid.Column="1"
-                Grid.RowSpan="2"
-                Grid.Row="3">
-            <Hyperlink TextDecorations="{x:Null}"
-                       Foreground="White"
-                       NavigateUri="BreedingWeeksPage.xaml">
-                <materialDesign:PackIcon Kind="ArrowRight"
-                                         Height="30"
-                                         Width="30" />
-            </Hyperlink>
-        </Button>
         <materialDesign:Snackbar HorizontalAlignment="Stretch"
                                  VerticalAlignment="Stretch"
                                  Grid.Column="0"

@@ -1,0 +1,122 @@
+﻿<Page x:Class="WpfApp2.MainFremaPage.DeliveryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      xmlns:local="clr-namespace:WpfApp2.MainFremaPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      d:DesignHeight="600"
+      d:DesignWidth="1000"
+      Title="DeliveryPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <m:Map CredentialsProvider="AttsGkqIHCOIEA11KtQZDphl5bi8lppin64jeg-ZOOhiS4cdHA_EXJwHSbyZi4Xo"
+               x:Name="MyMap"
+               Mode="Road"
+               Grid.ColumnSpan="2"
+               Grid.Row="1"
+               ZoomLevel="6"
+               Center="48.5238000, 30.4546600">
+            <Canvas m:MapLayer.Position="-23.1870304,-50.6606103"
+                    m:MapLayer.PositionOrigin="BottomCenter"
+                    Width="30"
+                    Height="30">
+                <materialDesign:PackIcon Kind="MapMarker"
+                                         Width="30"
+                                         Height="30"
+                                         Foreground="#FF3C3C3C" />
+            </Canvas>
+        </m:Map>
+
+        <ProgressBar Grid.Column="1"
+                     Name="LoadingBar"
+                     IsIndeterminate="True"
+                     Height="25"
+                     Width="250"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     Visibility="Collapsed" />
+        <StackPanel>
+            <GroupBox Header="Enter one location per line and then press solve."
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Background="White"
+                      materialDesign:ColorZoneAssist.Mode="Custom"
+                      materialDesign:ColorZoneAssist.Background="#FF65B5F6"
+                      materialDesign:ColorZoneAssist.Foreground="White"
+                      Margin="5">
+                <TextBox Style="{StaticResource DeliveryTextBox}"
+                         Name="InputTbx"
+                         VerticalScrollBarVisibility="Auto" />
+            </GroupBox>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5,5"
+                        HorizontalAlignment="Left">
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                          Name="TspOptimizationTypeCbx"
+                          materialDesign:HintAssist.Hint="Waypoint Optimization"
+                          Width="240"
+                          Height="50">
+                    <ComboBoxItem Content="Travel Time"
+                                  Tag="TravelTime" />
+                    <ComboBoxItem Content="Travel Distance"
+                                  Tag="TravelDistance" />
+                    <ComboBoxItem Content="Straight Line Distance"
+                                  IsSelected="True"
+                                  Tag="StraightLineDistance" />
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Margin="5,0 0 5"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                          Name="TravelModeTypeCbx"
+                          materialDesign:HintAssist.Hint="Travel Mode"
+                          Width="240"
+                          Height="50">
+                    <ComboBoxItem Content="Driving"
+                                  IsSelected="True" />
+                    <ComboBoxItem Content="Walking" />
+                    <ComboBoxItem Content="Transit" />
+                    <ComboBoxItem Content="Truck" />
+                </ComboBox>
+            </StackPanel>
+
+            <Button Content="Calculate Route"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Foreground="#FF65B5F6"
+                    BorderBrush="#FF65B5F6"
+                    ToolTip="MaterialDesignOutlinedButton"
+                    Width="150"
+                    Height="30"
+                    Click="CalculateRouteBtn_Clicked" />
+
+            <GroupBox Header="Output"
+                      Style="{DynamicResource MaterialDesignCardGroupBox}"
+                      Background="White"
+                      materialDesign:ColorZoneAssist.Mode="Custom"
+                      materialDesign:ColorZoneAssist.Background="#FF65B5F6"
+                      materialDesign:ColorZoneAssist.Foreground="White"
+                      Margin="5">
+                <TextBox Style="{StaticResource DeliveryTextBox}"
+                         Name="OutputTbx"
+                         Height="75"
+                         Grid.Column="1"
+                         VerticalScrollBarVisibility="Auto" />
+            </GroupBox>
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>

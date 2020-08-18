@@ -27,10 +27,7 @@ namespace WpfApp2.MainFremaPage
         BreedingHelper breedingHelper = new BreedingHelper();
         public BreedingWeeksChartsPage()
         {
-            InitializeComponent();
-
-            
-            
+            InitializeComponent();         
         }
 
         public SeriesCollection SeriesCollection { get; set; }

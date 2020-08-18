@@ -20,6 +20,7 @@
                     Source="Styles/Fons.xaml" />
                 <ResourceDictionary
                     Source="Styles/Windows.xaml" />
+                <ResourceDictionary Source="Styles/DeliveryPageResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

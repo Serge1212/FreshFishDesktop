@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp2.MainFremaPage;
 
 namespace WpfApp2.MainFrame
 {
@@ -59,6 +60,10 @@ namespace WpfApp2.MainFrame
                 case 4:
                     MainFrame.Content = null;
                     MainFrame.Content = new FishBreedingPage();
+                    break;
+                case 5:
+                    MainFrame.Content = null;
+                    MainFrame.Content = new DeliveryPage();
                     break;
                 default:
                     break;

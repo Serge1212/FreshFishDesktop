@@ -39,7 +39,7 @@ namespace WpfApp2.MainFremaPage
 
             BreedingWeeksCollection = client
              .Child("BreedingWeeks")
-             .AsObservable<BreedingWeeks>().Where(bw => bw.Object.BreedingDetailsID == FishBreedingPage.BreedingDetailsFromDataGridSelected.ID)
+             .AsObservable<BreedingWeeks>().Where(bw => bw.Object.BreedingDetailsID == FishBreedingPage.BreedingDetailsFromDataGridSelected?.ID)
              .ObserveOnDispatcher()
              .AsObservableCollection();
 
