@@ -16,7 +16,8 @@ namespace WpfApp2.Helpers
         public async Task<List<Products>> GetAllProductsAsync()//метод отримання всіх продуктів
         {
             return (await client //за допомогою client отримуємо доступ до бд
-                .Child("freshfish")//далі, звертаємось до вузла, який вміщує дані про продукти
+                .Child("freshfish")
+                //далі, звертаємось до вузла, який вміщує дані про продукти
                 .OnceAsync<Products>()).Select(item => new Products
                 {
                     id = item.Object.id,

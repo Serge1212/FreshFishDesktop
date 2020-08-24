@@ -1,17 +1,15 @@
-﻿<Page x:Class="WpfApp2.MainFrame.WorkerPage1"
+﻿<Page x:Class="WpfApp2.MainFremaPage.VehiclesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:WpfApp2.MainFrame"
-      mc:Ignorable="d"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp2.MainFremaPage"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignHeight="470"
-      d:DesignWidth="760"
-      Title="WorkerPage1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="VehiclesPage"
       FontFamily="Lucida Sans"
       Foreground="#FF014E81">
-
     <Grid>
         <Border Height="40"
                 Margin="20 2 20 0"
@@ -37,7 +35,6 @@
                             Height="20"
                             Width="20"
                             BorderBrush="{x:Null}"
-                            Click="ButtonConvert_Click"
                             ToolTip="Convert to Excel file">
                         <materialDesign:PackIcon Kind="FileExcel"
                                                  Height="20"
@@ -53,12 +50,12 @@
                         Height="30"
                         Width="30">
                     <Button x:Name="ButtonAdd"
+                            Click="ButtonAdd_Click"
                             Background="{x:Null}"
                             Height="20"
                             Width="20"
                             BorderBrush="{x:Null}"
-                            Click="ButtonAdd_Click"
-                            ToolTip="Add new worker">
+                            ToolTip="Add a new vehicle">
                         <materialDesign:PackIcon Kind="AddBox"
                                                  Height="20"
                                                  Width=" 20"
@@ -74,12 +71,12 @@
                         Width="30">
                     <Button x:Name="ButtonEdit"
                             Click="ButtonEdit_Click"
+                            IsEnabled="False"
                             Background="{x:Null}"
                             Height="20"
                             Width="20"
                             BorderBrush="{x:Null}"
-                            ToolTip="Update selected worker"
-                            IsEnabled="False">
+                            ToolTip="Update selected vehicle">
                         <materialDesign:PackIcon Kind="Edit"
                                                  Height="20"
                                                  Width=" 20"
@@ -94,13 +91,13 @@
                         Height="30"
                         Width="30">
                     <Button x:Name="ButtonDelete"
+                            Click="ButtonDelete_Click"
                             IsEnabled="False"
                             Background="{x:Null}"
                             Height="20"
                             Width="20"
                             BorderBrush="{x:Null}"
-                            Click="ButtonDelete_Click"
-                            ToolTip="Delete selected worker">
+                            ToolTip="Delete selected vehicle">
                         <materialDesign:PackIcon Kind="Delete"
                                                  Height="20"
                                                  Width=" 20"
@@ -114,8 +111,8 @@
                         Width="180"
                         Background="White"
                         CornerRadius="10">
-                    <ComboBox x:Name="WorkersSearchComboBox"
-                              FocusManager.FocusedElement="{Binding ElementName=WorkersSearchTextBox}"
+                    <ComboBox x:Name="SearchByCombobox"
+                              FocusManager.FocusedElement="{Binding ElementName=SearchTextBox}"
                               Background="White"
                               Height="25"
                               Width="165"
@@ -124,14 +121,11 @@
                               Foreground="#FF014E81"
                               materialDesign:HintAssist.Hint="Select"
                               BorderBrush="#FF014E81"
-                              ToolTip="Select a parameter for the search">
-                        <ComboBoxItem Content="Name" />
-                        <ComboBoxItem Content="Surname" />
-                        <ComboBoxItem Content="Patronymic" />
-                        <ComboBoxItem Content="Position" />
-                        <ComboBoxItem Content="Salary" />
-                        <ComboBoxItem Content="Phone Number" />
-                        <ComboBoxItem Content="Address" />
+                              ToolTip="Select a parameter for the searching">
+                        <ComboBoxItem Content="Product Name" />
+                        <ComboBoxItem Content="Price" />
+                        <ComboBoxItem Content="Date" />
+                        <ComboBoxItem Content="Status" />
                     </ComboBox>
                 </Border>
                 <Border HorizontalAlignment="Left"
@@ -140,8 +134,8 @@
                         Width="250"
                         Background="White"
                         CornerRadius="10">
-                    <TextBox x:Name="WorkersSearchTextBox"
-                             TextChanged="WorkersSearchTextBox_TextChanged"
+                    <TextBox x:Name="SearchTextBox"
+                             TextChanged="SearchTextBox_TextChanged"
                              TextWrapping="Wrap"
                              Height="24"
                              FontSize="12"
@@ -167,40 +161,30 @@
                         BorderThickness="0"
                         CornerRadius="20"
                         Background="White" />
-                <DataGrid x:Name="WorkersDataGrid"
+                <DataGrid x:Name="VehiclesDataGrid"
+                          SelectionChanged="VehiclesDataGrid_SelectionChanged"
+                          MouseDoubleClick="VehiclesDataGrid_MouseDoubleClick"
                           IsReadOnly="True"
-                          Margin="0"
-                          BorderBrush="{x:Null}"
                           FontFamily="Lucida Sans"
                           FontSize="13"
                           AutoGenerateColumns="False"
-                          SelectionChanged="WorkersDataGrid_SelectionChanged"
-                          MouseDoubleClick="WorkersDataGrid_MouseDoubleClick">
+                          Margin="0"
+                          BorderBrush="{x:Null}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Model"
+                                            Binding="{ Binding Path=Model}" />
+                        <DataGridTextColumn Header="Mark"
+                                            Binding="{ Binding Path=Mark}" />
+                        <DataGridTextColumn Header="Date of manufacture"
+                                            Binding="{ Binding Path=ManufactureDate}" />
+                        <DataGridTextColumn Header="Mileage"
+                                            Binding="{ Binding Path=Mileage}" />
+                        <DataGridTextColumn Header="Fuel consumption"
+                                            Binding="{ Binding Path=FuelConsumption}" />
+                    </DataGrid.Columns>
                     <DataGrid.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=Bdborder}" />
                     </DataGrid.OpacityMask>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name"
-                                            Binding="{Binding Path=name}" />
-                        <DataGridTextColumn Header="Surname"
-                                            Binding="{Binding Path=surname}" />
-                        <DataGridTextColumn Header="Patronymic"
-                                            Binding="{Binding Path=patronymic}" />
-                        <DataGridTextColumn Header="Position"
-                                            Binding="{Binding Path=position}" />
-                        <DataGridTextColumn Header="Salary"
-                                            Binding="{Binding Path=salary}" />
-                        <DataGridTextColumn Header="Phone number"
-                                            Binding="{Binding Path=phonenumber}" />
-                        <DataGridTextColumn Header="Address"
-                                            Binding="{Binding Path=address}" />
-                    </DataGrid.Columns>
-                    <DataGrid.RowDetailsTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=additioninfo}"
-                                       Margin="10" />
-                        </DataTemplate>
-                    </DataGrid.RowDetailsTemplate>
                 </DataGrid>
             </Grid>
         </Border>

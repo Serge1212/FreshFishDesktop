@@ -16,7 +16,8 @@
     Height="450"
     Width="400"
     ResizeMode="NoResize"
-    KeyUp="Window_KeyUp">
+    KeyUp="Window_KeyUp"
+    Loaded="Window_Loaded">
     <WindowChrome.WindowChrome>
         <WindowChrome
             CaptionHeight="0"
@@ -46,6 +47,7 @@
             HorizontalAlignment="Stretch"
             VerticalAlignment="Top"
             Background="#FF014E81">
+            
             <StackPanel
                 Width="45"
                 Height="30"
@@ -238,9 +240,8 @@
                 </ComboBox>
             </Border>
         </StackPanel>
-        <StackPanel
-            Margin="0 210 0 160 "
-            Orientation="Horizontal">
+        <StackPanel Margin="0 210 0 160 "
+                    Orientation="Horizontal">
             <Border
                 Margin="5 0 0 0"
                 HorizontalAlignment="Left"
@@ -409,5 +410,6 @@
                 </Border>
             </StackPanel>
         </StackPanel>
+       
     </Grid>
 </Window>

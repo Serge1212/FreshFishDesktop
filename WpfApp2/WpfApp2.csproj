@@ -13,9 +13,16 @@
     <None Remove="Image\1920px-Flag_of_Japan.svg.png" />
     <None Remove="Image\1920px-Flag_of_the_People%27s_Republic_of_China.svg.png" />
     <None Remove="Image\1920px-Flag_of_Turkey2.png" />
+    <None Remove="Image\Bitcoin.png" />
+    <None Remove="Image\dollar.png" />
+    <None Remove="Image\Euro.png" />
     <None Remove="Image\fish %281%29.png" />
     <None Remove="Image\Great_Britain.png" />
+    <None Remove="Image\Hryvna.png" />
+    <None Remove="Image\hryvnia-24.png" />
+    <None Remove="Image\hryvnia-48.png" />
     <None Remove="Image\icons8-released-fish-96.png" />
+    <None Remove="Image\Ruble.png" />
     <None Remove="Image\ukraine.png" />
   </ItemGroup>
 
@@ -42,8 +49,15 @@
     <Resource Include="Image\1920px-Flag_of_Japan.svg.png" />
     <Resource Include="Image\1920px-Flag_of_the_People's_Republic_of_China.svg.png" />
     <Resource Include="Image\1920px-Flag_of_Turkey2.png" />
+    <Resource Include="Image\Bitcoin.png" />
+    <Resource Include="Image\dollar.png" />
+    <Resource Include="Image\Euro.png" />
     <Resource Include="Image\fish (1).png" />
     <Resource Include="Image\Great_Britain.png" />
+    <Resource Include="Image\Hryvna.png" />
+    <Resource Include="Image\hryvnia-24.png" />
+    <Resource Include="Image\hryvnia-48.png" />
+    <Resource Include="Image\Ruble.png" />
     <Resource Include="Image\ukraine.png" />
   </ItemGroup>
 

@@ -22,6 +22,7 @@
 
         <m:Map CredentialsProvider="AttsGkqIHCOIEA11KtQZDphl5bi8lppin64jeg-ZOOhiS4cdHA_EXJwHSbyZi4Xo"
                x:Name="MyMap"
+               Culture="uk-UA"
                Mode="Road"
                Grid.ColumnSpan="2"
                Grid.Row="1"
@@ -62,17 +63,12 @@
                         Margin="5,5"
                         HorizontalAlignment="Left">
                 <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
+                          Background="White"
                           Name="TspOptimizationTypeCbx"
                           materialDesign:HintAssist.Hint="Waypoint Optimization"
                           Width="240"
                           Height="50">
-                    <ComboBoxItem Content="Travel Time"
-                                  Tag="TravelTime" />
-                    <ComboBoxItem Content="Travel Distance"
-                                  Tag="TravelDistance" />
-                    <ComboBoxItem Content="Straight Line Distance"
-                                  IsSelected="True"
-                                  Tag="StraightLineDistance" />
+                    
                 </ComboBox>
             </StackPanel>
 
@@ -84,24 +80,26 @@
                           materialDesign:HintAssist.Hint="Travel Mode"
                           Width="240"
                           Height="50">
-                    <ComboBoxItem Content="Driving"
-                                  IsSelected="True" />
-                    <ComboBoxItem Content="Walking" />
-                    <ComboBoxItem Content="Transit" />
-                    <ComboBoxItem Content="Truck" />
+                   
                 </ComboBox>
             </StackPanel>
 
             <Button Content="Calculate Route"
+                    HorizontalAlignment="Stretch"
                     Style="{StaticResource MaterialDesignOutlinedButton}"
                     Foreground="#FF65B5F6"
                     BorderBrush="#FF65B5F6"
                     ToolTip="MaterialDesignOutlinedButton"
-                    Width="150"
                     Height="30"
-                    Click="CalculateRouteBtn_Clicked" />
+                    Width="240"
+                    Click="CalculateRouteBtn_Clicked">
+                <Button.Background>
+                    <SolidColorBrush Color="White"
+                                     Opacity="0.5" />
+                </Button.Background>
+            </Button>
 
-            <GroupBox Header="Output"
+            <GroupBox Header="Result"
                       Style="{DynamicResource MaterialDesignCardGroupBox}"
                       Background="White"
                       materialDesign:ColorZoneAssist.Mode="Custom"
@@ -109,6 +107,7 @@
                       materialDesign:ColorZoneAssist.Foreground="White"
                       Margin="5">
                 <TextBox Style="{StaticResource DeliveryTextBox}"
+                         IsReadOnly="True"
                          Name="OutputTbx"
                          Height="75"
                          Grid.Column="1"

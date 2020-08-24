@@ -32,7 +32,7 @@ namespace WpfApp2.MainFrame
         {
             InitializeComponent();
 
-            UploadPackersAndDrivers();
+            
             Product = product;
             if(product == null)
             {
@@ -41,7 +41,7 @@ namespace WpfApp2.MainFrame
                 edited = false;
             }
             DataContext = Product;
-            FillPackerAndDriverComboBoxes();
+            
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -167,6 +167,16 @@ namespace WpfApp2.MainFrame
                     DriversComboBox.Text = driverNameSurname;
                     PackersComboBox.Text = packerNameSurname;
                 }
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            if (Product != null)
+            {
+                UploadPackersAndDrivers();
+                FillPackerAndDriverComboBoxes();   
             }
         }
     }

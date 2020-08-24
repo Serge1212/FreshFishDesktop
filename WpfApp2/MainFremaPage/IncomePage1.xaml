@@ -12,121 +12,299 @@
     Title="IncomePage1"
     Loaded="Page_Loaded">
     <Grid>
-        <Border  Margin="8 8 8 8  " BorderBrush="#FF7EC3E9"  CornerRadius="20" BorderThickness="2" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition Width="280" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="120" />
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <materialDesign:Card Margin="5"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+                             UniformCornerRadius="8">
+            <materialDesign:Card.Background>
+                <ImageBrush ImageSource="\Image\Hryvna.png" />
+            </materialDesign:Card.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Margin="10 10 0 0"
+                       Grid.ColumnSpan="2"
+                       Grid.RowSpan="2"
+                       Content="Total income: "
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="#FF014E81"
+                       FontWeight="DemiBold"
+                       FontSize="25"
+                       Width="160"
+                       Height="50" />
+                <Label Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       Margin="20 2 0 0"
+                       x:Name="incomeLabel"
+                       Foreground="#FF014E81"
+                       Content="0.0"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       FontSize="25"
+                       Height="40" />
+                <StackPanel Grid.Row="1"
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            Margin="40 0 0 0">
+                    <Border Background="White"
+                            Height="35"
+                            Width="35"
+                            CornerRadius="20">
+                        <Image Source="\Image\hryvnia-48.png"
+                               Height="25"
+                               Width="25" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="0"
+                             Margin="5"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+                             UniformCornerRadius="8">
+            <materialDesign:Card.Background>
+                <ImageBrush ImageSource="\Image\dollar.png" />
+            </materialDesign:Card.Background>
 
             <Grid>
-                <Border  x:Name="Bdborder" BorderThickness="0" CornerRadius="20" Background="White" />
-                <Grid >
-                    <Grid.OpacityMask>
-                        <VisualBrush Visual="{Binding ElementName=Bdborder}"/>
-                    </Grid.OpacityMask>
-                    <StackPanel
-                        Margin="5 5 50 50"
-                        Orientation="Horizontal">
-                        <Label
-                            Content="Total income: "
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                            Foreground="#FF7EC3E9"
-                            FontWeight="DemiBold"
-                            FontSize="34"
-                            Width="230"
-                            Height="69" />
-                        <Label
-                            x:Name="incomeLabel"
-                            Content="0.0"
-                            VerticalAlignment="Top"
-                            Foreground="#FF014E81"
-                            FontWeight="Bold"
-                            FontSize="34"
-                            Height="69" />
-                        <Button
-                            Visibility="Hidden"
-                            VerticalAlignment="Top"
-                            Height="40"
-                            Margin=" 0 7 0 0"
-                            Width="48"
-                            BorderBrush="{x:Null}"
-                            Background="{x:Null}">
-                            <materialDesign:PackIcon
-                                Kind="Refresh"
-                                Foreground="Black"
-                                Height=" 35"
-                                Width="35"
-                                Margin="-14 -4 0 0" />
-                        </Button>
-                    </StackPanel>
-                    <StackPanel
-                        Margin="5 70 50 50"
-                        Orientation="Horizontal">
-                        <Label>
-                            <materialDesign:PackIcon
-                                Kind="Dollar"
-                                Foreground="#FF014E81"
-                                Height="30"
-                                Width="30"
-                                Margin="-11 -3 0 0" />
-                        </Label>
-                        <Label
-                            x:Name="DollarLabel"
-                            Content="0.0"
-                            Foreground="#FF7EC3E9"
-                            FontSize="28"
-                            Margin="-10 -7 1 1"></Label>
-                    </StackPanel>
-                    <StackPanel
-                        Margin="5 110 50 50"
-                        Orientation="Horizontal">
-                        <Label>
-                            <materialDesign:PackIcon
-                                Kind="Euro"
-                                Foreground="#FF014E81"
-                                Height="30"
-                                Width="30"
-                                Margin="-11 -3 0 0" />
-                        </Label>
-                        <Label
-                            x:Name="EuroLabel"
-                            FontSize="28"
-                            Foreground="#FF7EC3E9"
-                            Margin="-10 -7 1 1">0.0</Label>
-                    </StackPanel>
-                    <StackPanel
-                        Margin="5 150 50 50"
-                        Orientation="Horizontal">
-                        <Label>
-                            <materialDesign:PackIcon
-                                Kind="Ruble"
-                                Foreground="#FF014E81"
-                                Height="30"
-                                Width="30"
-                                Margin="-11 -3 0 0" />
-                        </Label>
-                        <Label
-                            x:Name="RubleLabel"
-                            FontSize="28"
-                            Foreground="#FF7EC3E9"
-                            Margin="-10 -7 1 1">0.0</Label>
-                    </StackPanel>
-                    <StackPanel
-                        Margin="5 190 50 50"
-                        Orientation="Horizontal">
-                        <Label>
-                            <materialDesign:PackIcon
-                                Kind="Bitcoin"
-                                Foreground="#FF014E81"
-                                Height="30"
-                                Width="30"
-                                Margin="-11 -3 0 0" />
-                        </Label>
-                        <Label
-                            x:Name="BitcoinLabel"
-                            FontSize="28"
-                            Foreground="#FF7EC3E9"
-                            Margin="-10 -7 1 1">0.0</Label>
-                    </StackPanel>
-                </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Margin="10 10 0 0"
+                       Grid.ColumnSpan="2"
+                       Grid.RowSpan="2"
+                       Content="In Dollars: "
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontWeight="DemiBold"
+                       FontSize="25"
+                       Width="150"
+                       Height="50" />
+                <Label Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       Margin="20 2 0 0"
+                       x:Name="DollarLabel"
+                       Foreground="White"
+                       Content="0.0"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       FontSize="25"
+                       Height="40" />
+                <StackPanel Grid.Row="1"
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            Margin="40 0 0 0">
+                    <Border Background="White"
+                            Height="35"
+                            Width="35"
+                            CornerRadius="20">
+                        <materialDesign:PackIcon Kind="Dollar"
+                                                 Margin="3"
+                                                 Height="28"
+                                                 Width="28" />
+                    </Border>
+                </StackPanel>
             </Grid>
-        </Border>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="5"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+                             UniformCornerRadius="8">
+            <materialDesign:Card.Background>
+                <ImageBrush ImageSource="\Image\Euro.png" />
+            </materialDesign:Card.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Margin="10 10 0 0"
+                       Grid.ColumnSpan="2"
+                       Grid.RowSpan="2"
+                       Content="In Euro: "
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontWeight="DemiBold"
+                       FontSize="25"
+                       Width="150"
+                       Height="50" />
+                <Label Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       Margin="20 2 0 0"
+                       x:Name="EuroLabel"
+                       Foreground="White"
+                       Content="0.0"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       FontSize="25"
+                       Height="40" />
+                <StackPanel Grid.Row="1"
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            Margin="40 0 0 0">
+                    <Border Background="White"
+                            Height="35"
+                            Width="35"
+                            CornerRadius="20">
+                        <materialDesign:PackIcon Kind="Euro"
+                                                 Margin="3"
+                                                 Height="28"
+                                                 Width="28" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Row="1"
+                             Grid.Column="3"
+                             Margin="5"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+                             UniformCornerRadius="8">
+            <materialDesign:Card.Background>
+                <ImageBrush ImageSource="\Image\Ruble.png" />
+            </materialDesign:Card.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Margin="10 10 0 0"
+                       Grid.ColumnSpan="2"
+                       Grid.RowSpan="2"
+                       Content="In Rubles: "
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontWeight="DemiBold"
+                       FontSize="25"
+                       Width="150"
+                       Height="50" />
+                <Label Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       Margin="20 2 0 0"
+                       x:Name="RubleLabel"
+                       Foreground="White"
+                       Content="0.0"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       FontSize="25"
+                       Height="40" />
+                <StackPanel Grid.Row="1"
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            Margin="40 0 0 0">
+                    <Border Background="White"
+                            Height="35"
+                            Width="35"
+                            CornerRadius="20">
+                        <materialDesign:PackIcon Kind="Ruble"
+                                                 Margin="3"
+                                                 Height="28"
+                                                 Width="28" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Row="2"
+                             Grid.Column="0"
+                             Margin="5"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                             materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
+                             UniformCornerRadius="8">
+            <materialDesign:Card.Background>
+                <ImageBrush ImageSource="\Image\Bitcoin.png" />
+            </materialDesign:Card.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Margin="10 10 0 0"
+                       Grid.ColumnSpan="2"
+                       Grid.RowSpan="2"
+                       Content="In Bitcoins: "
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontWeight="DemiBold"
+                       FontSize="25"
+                       Width="150"
+                       Height="50" />
+                <Label Grid.ColumnSpan="3"
+                       Grid.Row="1"
+                       Margin="20 2 50 0"
+                       x:Name="BitcoinLabel"
+                       Foreground="White"
+                       Content="0.0"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
+                       FontSize="20"
+                       Height="40" />
+                <StackPanel Grid.Row="1"
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            Margin="40 0 0 0">
+                    <Border Background="White"
+                            Height="35"
+                            Width="35"
+                            CornerRadius="20">
+                        <materialDesign:PackIcon Kind="Bitcoin"
+                                                 Margin="3.5"
+                                                 Height="28"
+                                                 Width="28" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </Page>

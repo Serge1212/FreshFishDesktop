@@ -217,6 +217,34 @@
                             </Border>
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem Margin="0"
+                                  Height="35">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="-3 -6 0 -6">
+                            <Border Background="White"
+                                    Height="30"
+                                    Width="30"
+                                    CornerRadius="20">
+                                <materialDesign:PackIcon Kind="Truck"
+                                                         Width="25"
+                                                         Height="25"
+                                                         Margin="2.5 2 0 2"
+                                                         VerticalAlignment="Center"
+                                                         Foreground="#FF014E81" />
+                            </Border>
+                            <Border Background="White"
+                                    Height="30"
+                                    Width="85"
+                                    Margin="7 0 0 0"
+                                    CornerRadius="15">
+                                <TextBlock Text="Products"
+                                           VerticalAlignment="Center"
+                                           Margin="15 4 0  0"
+                                           Height="20"
+                                           Foreground="#FF014E81" />
+                            </Border>
+                        </StackPanel>
+                    </ListViewItem>
                     <ListViewItem
                         Margin="0 0 0 0"
                         Height="35">
@@ -322,7 +350,7 @@
                                     Height="30"
                                     Width="30"
                                     CornerRadius="20">
-                                <materialDesign:PackIcon Kind="Truck"
+                                <materialDesign:PackIcon Kind="MapMarker"
                                                          Width="20"
                                                          Height="20"
                                                         HorizontalAlignment="Center"

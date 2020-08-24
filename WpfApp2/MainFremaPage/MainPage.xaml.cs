@@ -19,6 +19,7 @@ namespace WpfApp2.MainFrame
     /// </summary>
     public partial class MainPage : Page
     {
+       
         public MainPage()
         {
             InitializeComponent();
@@ -51,17 +52,21 @@ namespace WpfApp2.MainFrame
                     break;
                 case 2:
                     MainFrame.Content = null;
-                    MainFrame.Content = new IncomePage1();
+                    MainFrame.Content = new VehiclesPage();
                     break;
                 case 3:
                     MainFrame.Content = null;
-                    MainFrame.Content = new DiagramsPage();
+                    MainFrame.Content = new IncomePage1();
                     break;
                 case 4:
                     MainFrame.Content = null;
-                    MainFrame.Content = new FishBreedingPage();
+                    MainFrame.Content = new DiagramsPage();
                     break;
                 case 5:
+                    MainFrame.Content = null;
+                    MainFrame.Content = new FishBreedingPage();
+                    break;
+                case 6:
                     MainFrame.Content = null;
                     MainFrame.Content = new DeliveryPage();
                     break;
