@@ -1,13 +1,13 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace WpfApp2.Models
 {
     public class Vehicles : BaseViewModel, IDataErrorInfo
     {
+        private string _id;
         private string _model;
         private string _mark;
         private string _manufactureDate;
@@ -18,19 +18,19 @@ namespace WpfApp2.Models
         {
             get => null;
         }
-    
+
         public Dictionary<string, string> VehiclesErrorsCollection = new Dictionary<string, string>();
 
         public string this[string columnName]
-        { 
+        {
             get
             {
                 string result = null;
                 Regex digitAndDotRegex = new Regex(@"^[0-9.]+$");//дозволяє тільки цифри і крапку
-                switch(columnName)
+                switch (columnName)
                 {
                     case "_model":
-                        if(string.IsNullOrEmpty(_model))
+                        if (string.IsNullOrEmpty(_model))
                         {
                             result = "Vehicle's model cannot be empty";
                         }
@@ -40,7 +40,7 @@ namespace WpfApp2.Models
                         {
                             result = "Vehicle's mark cannot be empty";
                         }
-                       break;
+                        break;
                     case "_manufactureDate":
                         if (string.IsNullOrEmpty(_manufactureDate))
                         {
@@ -83,6 +83,16 @@ namespace WpfApp2.Models
             }
         }
 
+        public string ID
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged("ID");
+            }
+        }
+
         public string Model
         {
             get => _model;
@@ -91,7 +101,7 @@ namespace WpfApp2.Models
                 _model = value;
                 OnPropertyChanged("Model");
             }
-            
+
         }
         public string Mark
         {
@@ -134,5 +144,9 @@ namespace WpfApp2.Models
 
         }
 
+        public override string ToString()
+        {
+            return Mark + " " + Model;
+        }
     }
 }

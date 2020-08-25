@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
+using WpfApp2.Helpers;
+using WpfApp2.Models;
 
 namespace WpfApp2.MainFremaPage
 {
@@ -47,10 +50,7 @@ namespace WpfApp2.MainFremaPage
             });
 
             InputTbx.Text = "Київ\r\nНовоукраїнка, вул. Леніна";
-
-            IGeocoder geocoder = new BingMapsGeocoder(BingMapsKey);
-            
-
+           
         }
 
         async void CalculateRouteBtn_Clicked(object sender, RoutedEventArgs e)
@@ -130,13 +130,35 @@ namespace WpfApp2.MainFremaPage
                 
                 if (timeSpan.Days > 0)
                 {
-                   OutputTbx.Text = string.Format("Travel Time: {3} days {0} hr {1} min {2} sec\r\nKm: {3}"
-                       , timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Days, distance);
+                    if (VehiclesComboBox.SelectedItem != null && FuelPriceTextBox.Text != null)
+                    {
+                        var selectedVehicle = VehiclesComboBox.SelectedItem as Vehicles;
+                        int wayCost = (int)( Convert.ToDouble(selectedVehicle.FuelConsumption) * distance / 100 * Convert.ToDouble(FuelPriceTextBox.Text));
+
+                        OutputTbx.Text = string.Format("Travel Time: {3} days {0} hr {1} min {2} sec\r\nKm:{4}\r\nWay cost: {5}(hrn)"
+                            , timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Days, distance, wayCost);
+                    }
+                    else
+                    {
+                        OutputTbx.Text = string.Format("Travel Time: {3} days {0} hr {1} min {2} sec\r\nKm:{4}"
+                            , timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Days, distance);
+                    }
                 }
                 else
                 {
-                    OutputTbx.Text = string.Format("Travel Time: {0} hr {1} min {2} sec\r\nKm: {3}"
-                        , timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, distance);
+                    if (VehiclesComboBox.SelectedItem != null && FuelPriceTextBox.Text != null)
+                    {
+                        var selectedVehicle = VehiclesComboBox.SelectedItem as Vehicles;
+                        int wayCost = (int)(Convert.ToDouble(selectedVehicle.FuelConsumption) * distance / 100 * Convert.ToDouble(FuelPriceTextBox.Text));
+
+                        OutputTbx.Text = string.Format("Travel Time: {0} hr {1} min {2} sec\r\nKm:{3}\r\nWay cost: {4}(hrn)"
+                            , timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, distance, wayCost);
+                    }
+                    else
+                    {
+                        OutputTbx.Text = string.Format("Travel Time: {3} days {0} hr {1} min {2} sec\r\nKm: {4}"
+                            , timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds, timeSpan.Days, distance);
+                    }
 
                 }
 
@@ -212,5 +234,12 @@ namespace WpfApp2.MainFremaPage
 
             return waypoints;
         }
+
+        //async void Page_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    VehiclesHelper vh = new VehiclesHelper();
+        //    var vehiclesList = await vh.GetAllVehiclesAsync();
+        //    VehiclesComboBox.ItemsSource = vehiclesList;
+        //}
     }
 }

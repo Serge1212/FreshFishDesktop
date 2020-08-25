@@ -207,42 +207,42 @@ namespace WpfApp2
                 mLastDock = dock;
             }
 
-            #endregion
+        #endregion
 
-            #region Windows Proc
+        #region Windows Proc
 
-            /// <summary>
-            /// Listens out for all windows messages for this window
-            /// </summary>
-            /// <param name="hwnd"></param>
-            /// <param name="msg"></param>
-            /// <param name="wParam"></param>
-            /// <param name="lParam"></param>
-            /// <param name="handled"></param>
-            /// <returns></returns>
-            private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        /// <summary>
+        /// Listens out for all windows messages for this window
+        /// </summary>
+        /// <param name="hwnd"></param>
+        /// <param name="msg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lParam"></param>
+        /// <param name="handled"></param>
+        /// <returns></returns>
+        private IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            switch (msg)
             {
-                switch (msg)
-                {
-                    // Handle the GetMinMaxInfo of the Window
-                    case 0x0024:/* WM_GETMINMAXINFO */
-                        WmGetMinMaxInfo(hwnd, lParam);
-                        handled = true;
-                        break;
-                }
-
-                return (IntPtr)0;
+                // Handle the GetMinMaxInfo of the Window
+                case 0x0024:/* WM_GETMINMAXINFO */
+                    WmGetMinMaxInfo(hwnd, lParam);
+                    handled = true;
+                    break;
             }
 
-            #endregion
+            return (IntPtr)0;
+        }
 
-            /// <summary>
-            /// Get the min/max window size for this window
-            /// Correctly accounting for the taskbar size and position
-            /// </summary>
-            /// <param name="hwnd"></param>
-            /// <param name="lParam"></param>
-            private void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
+        #endregion
+
+        /// <summary>
+        /// Get the min/max window size for this window
+        /// Correctly accounting for the taskbar size and position
+        /// </summary>
+        /// <param name="hwnd"></param>
+        /// <param name="lParam"></param>
+        private void WmGetMinMaxInfo(System.IntPtr hwnd, System.IntPtr lParam)
             {
                 // Get the point position to determine what screen we are on
                 POINT lMousePosition;

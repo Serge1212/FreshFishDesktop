@@ -1,0 +1,309 @@
+﻿<Window x:Class="WpfApp2.Windows.VehiclesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2.Windows"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d"
+        Title="VehiclesWindow"  WindowStartupLocation="CenterScreen"
+    FontFamily="Lucida Sans"
+    WindowStyle="None"
+    FontSize="14"
+    Foreground="White"
+    Height="450"
+    Width="400"
+    ResizeMode="NoResize"
+    
+    >
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            CaptionHeight="0"
+            CornerRadius="5"
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="5"
+            UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+    <Grid
+        x:Name="ProductsTextBoxes"
+        MouseDown="ProductsTextBoxes_OnMouseDown"
+        Background="#FFF0F0F0">
+        <Grid.BindingGroup>
+            <BindingGroup
+                x:Name="bindingGroup" />
+        </Grid.BindingGroup>
+        <materialDesign:PackIcon
+            Kind="FishbowlOutline"
+            Margin="0 30 0 0 "
+            Height="360"
+            Width="400"
+            Foreground="#FF014E81"
+            Opacity="0.1" />
+        <Grid
+           
+            Height="30"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            Background="#FF014E81">
+
+            <StackPanel
+                Width="45"
+                Height="30"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
+                <Button
+                    Focusable="False"
+                    Name="Button_close"
+                    Click="Button_close_OnClick"
+                    Height="28"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                   >
+                    <materialDesign:PackIcon
+                        Kind="Close" />
+                </Button>
+            </StackPanel>
+            <StackPanel
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Margin="5 0 0 0 "
+                Orientation="Horizontal">
+                <materialDesign:PackIcon
+                    Margin="0 5 0  5"
+                    Height=" 20"
+                    Width="20"
+                    Kind="FishbowlOutline" />
+                <TextBlock
+                    Text="Goods"
+                    VerticalAlignment="Center"
+                    Margin="7 4 0  0"
+                    Height="20" />
+            </StackPanel>
+        </Grid>
+        <StackPanel
+            Margin="0 30 0 350 "
+            Orientation="Horizontal"
+            FocusManager.FocusedElement="{Binding ElementName=markTextBox}">
+            <Border
+                Background="White"
+                CornerRadius="10"
+                Height="42"
+                Width="165"
+                Margin=" 5 0 240 0 "
+                BorderThickness="1.5"
+                BorderBrush="#FF7EC3E9">
+                <TextBox
+                    x:Name="markTextBox"
+                    Text="{Binding Path=Mark, ValidatesOnDataErrors=True,
+                    UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="{Binding VehiclesErrorsCollection[_mark]}"
+                    Margin="0 1 0 0"
+                    Foreground="#FF014E81"
+                    materialDesign:HintAssist.FloatingScale="0.8"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0"
+                    Background="{x:Null}"
+                    materialDesign:HintAssist.IsFloating="True"
+                    FontSize="12"
+                    Height="35"
+                    Width="145"
+                    MaxLength="12"
+                    Padding="0,-5,0,2">
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="0 2 0 0">
+                            <TextBlock
+                                Padding="2,0,0,0">Mark</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+            </Border>
+            <Border
+                Background="White"
+                CornerRadius="10"
+                Height="42"
+                Width="175"
+                Margin=" -220 0 240 0 "
+                BorderThickness="1.5"
+                BorderBrush="#FF7EC3E9">
+                <TextBox
+                    x:Name="modelTextBox"
+                    Text="{Binding Path=Model, ValidatesOnDataErrors=True,
+                    UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="{Binding VehiclesErrorsCollection[_model]}"
+                    Margin="0 1 0 0"
+                    Foreground="#FF014E81"
+                    materialDesign:HintAssist.FloatingScale="0.8"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0"
+                    Background="{x:Null}"
+                    materialDesign:HintAssist.IsFloating="True"
+                    FontSize="12"
+                    Height="35"
+                    Width="155"
+                    MaxLength="18"
+                    Padding="0,-5,0,2">
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="0 2 0 0">
+                            <TextBlock
+                                Padding="2,0,0,0">Model</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
+            </Border>
+        </StackPanel>
+        <StackPanel
+            Margin="0 90 0 280 "
+            Orientation="Horizontal">
+            <Border
+                Background="White"
+                CornerRadius="10"
+                Height="42"
+                Width="165"
+                Margin=" 5 0 240 0 "
+                BorderThickness="1.5"
+                BorderBrush="#FF7EC3E9">
+                <DatePicker
+                    x:Name="manufactureDateDatePicker"
+                    Text="{Binding Path=ManufactureDate}"
+                    Margin="0 1 0 0"
+                    Foreground="#FF014E81"
+                    materialDesign:HintAssist.FloatingScale="0.8"
+                    materialDesign:TextFieldAssist.TextBoxViewMargin="0"
+                    Background="{x:Null}"
+                    materialDesign:HintAssist.IsFloating="True"
+                    FontSize="12"
+                    Height="35"
+                    Width="145"
+                    Padding="0,-5,0,2">
+                    <materialDesign:HintAssist.Hint>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="0 2 0 0">
+                            <TextBlock
+                                Padding="2,0,0,0">Date of manufacture</TextBlock>
+                        </StackPanel>
+                    </materialDesign:HintAssist.Hint>
+                </DatePicker>
+            </Border>
+        </StackPanel>
+        <StackPanel
+            Margin="0 150 0 220 "
+            Orientation="Horizontal">
+            <Border
+                Margin="5 0 0 0"
+                HorizontalAlignment="Left"
+                Height="42"
+                Width="160"
+                Background="White"
+                CornerRadius="10"
+                BorderThickness="1.5"
+                BorderBrush="#FF7EC3E9">
+                <TextBox
+                    x:Name="fuelConsumptionTextBox"
+                    Text="{Binding Path=FuelConsumption, ValidatesOnDataErrors=True,
+                    UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="{Binding VehiclesErrorsCollection[_fuelConsumption]}"
+                    Background="White"
+                    Height="42"
+                    Width="145"
+                    FontSize="12"
+                    Foreground="#FF014E81"
+                    materialDesign:HintAssist.Hint="Fuel consumption (l/100km)"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+            </Border>
+            <Border
+                Margin="5 0 0 0"
+                HorizontalAlignment="Left"
+                Height="42"
+                Width="160"
+                Background="White"
+                CornerRadius="10"
+                BorderThickness="1.5"
+                BorderBrush="#FF7EC3E9">
+                <TextBox
+                    Text="{Binding Path=Mileage, ValidatesOnDataErrors=True,
+                    UpdateSourceTrigger=PropertyChanged}"
+                    ToolTip="{Binding VehiclesErrorsCollection[_mileage]}"
+                    x:Name="mileageTextBox"
+                    Background="White"
+                    Height="42"
+                    Width="145"
+                    FontSize="12"
+                    Foreground="#FF014E81"
+                    materialDesign:HintAssist.Hint="Mileage"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                   
+                </TextBox>
+            </Border>
+        </StackPanel>
+       
+        <StackPanel
+            VerticalAlignment="Bottom"
+            Height="34">
+            <Border
+                Background="#FF7EC3E9"
+                Height="34"
+                Width="400"
+                Opacity="0.7">
+                <Border
+                    Height="30"
+                    Width="70"
+                    Background="White"
+                    CornerRadius="15"
+                    Margin=" 325 0 0 0">
+                    <Button
+                        x:Name="ButtonSave"
+                        Click="ButtonSave_OnClick"
+                        Height="30"
+                        Width="60"
+                        BorderBrush="{x:Null}"
+                        Background="{x:Null}"
+                       >
+                        <materialDesign:PackIcon
+                            Kind="ContentSave"
+                            Foreground="#FF053B5F"
+                            Height="25"
+                            Width="30"
+                            Margin=" -2 -1 0 0 " />
+                    </Button>
+                </Border>
+            </Border>
+            <StackPanel
+                x:Name="DeleteVehicleStackPanel">
+                <Border
+                    Background="#FF7EC3E9"
+                    Height="34"
+                    Width="400"
+                    Opacity="0.7">
+                    <Border
+                        Height="30"
+                        Width="70"
+                        Background="White"
+                        CornerRadius="15"
+                        Margin="5,-32,325,36">
+                        <Button
+                            x:Name="ButtonDeleteProduct"
+                           Click="ButtonDeleteProduct_OnClick"
+                            Focusable="False"
+                            Height="30"
+                            Width="60"
+                            BorderBrush="{x:Null}"
+                            Background="{x:Null}">
+                            <materialDesign:PackIcon
+                                Kind="Delete"
+                                Foreground="DarkRed"
+                                Height="25"
+                                Width="30" />
+                        </Button>
+                    </Border>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -9,7 +9,8 @@
       mc:Ignorable="d"
       d:DesignHeight="600"
       d:DesignWidth="1000"
-      Title="DeliveryPage">
+      Title="DeliveryPage"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -59,29 +60,33 @@
                          Name="InputTbx"
                          VerticalScrollBarVisibility="Auto" />
             </GroupBox>
-            <StackPanel Orientation="Horizontal"
-                        Margin="5,5"
-                        HorizontalAlignment="Left">
-                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                          Background="White"
-                          Name="TspOptimizationTypeCbx"
-                          materialDesign:HintAssist.Hint="Waypoint Optimization"
-                          Width="240"
-                          Height="50">
-                    
+            <StackPanel
+                Orientation="Horizontal"
+                Margin="5,5"
+                HorizontalAlignment="Left">
+                <ComboBox
+                    x:Name="VehiclesComboBox"
+                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                    Background="White"
+                    materialDesign:HintAssist.Hint="Vehicle"
+                    Width="240"
+                    Height="50">
+
                 </ComboBox>
             </StackPanel>
+            <StackPanel
+                Orientation="Horizontal"
+                Margin="5,5"
+                HorizontalAlignment="Left">
+                <TextBox
+                    x:Name="FuelPriceTextBox"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Background="White"
+                    materialDesign:HintAssist.Hint="Fuel price"
+                    Width="240"
+                    Height="50">
 
-            <StackPanel Margin="5,0 0 5"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Left">
-                <ComboBox Style="{StaticResource MaterialDesignFilledComboBox}"
-                          Name="TravelModeTypeCbx"
-                          materialDesign:HintAssist.Hint="Travel Mode"
-                          Width="240"
-                          Height="50">
-                   
-                </ComboBox>
+                </TextBox>
             </StackPanel>
 
             <Button Content="Calculate Route"
